@@ -152,7 +152,7 @@ def save_vnnlib(input_bounds: torch.Tensor, label: int, spec_path: str, total_ou
         f.write("))")
 
 
-def create_instances_csv(num_props: int = 15, path: str = "mnistfc_instances.csv"):
+def create_instances_csv(num_props: int = 15, path: str = "instances.csv"):
 
     """
     Creates the instances_csv file.
@@ -178,9 +178,9 @@ def create_instances_csv(num_props: int = 15, path: str = "mnistfc_instances.csv
             for prop in props:
 
                 if net == nets[-1] and prop == props[-1]:
-                    f.write(f"./onnx/{net},{prop},{timeout}")
+                    f.write(f"./onnx/{net},./vnnlib_properties/{prop},{timeout}")
                 else:
-                    f.write(f"./onnx/{net},{prop},{timeout}\n")
+                    f.write(f"./onnx/{net},./vnnlib_properties/{prop},{timeout}\n")
 
 
 if __name__ == '__main__':
